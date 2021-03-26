@@ -489,6 +489,8 @@ type Windows struct {
 	IgnoreFlushesDuringBoot bool `json:"ignoreFlushesDuringBoot,omitempty"`
 	// HyperV contains information for running a container with Hyper-V isolation.
 	HyperV *WindowsHyperV `json:"hyperv,omitempty"`
+	// HostProcess contains information for running a host process container.
+	HostProcess *WindowsHostProcess `json:"hostProcess,omitempty"`
 	// Network restriction configuration.
 	Network *WindowsNetwork `json:"network,omitempty"`
 }
@@ -555,6 +557,13 @@ type WindowsNetwork struct {
 type WindowsHyperV struct {
 	// UtilityVMPath is an optional path to the image used for the Utility VM.
 	UtilityVMPath string `json:"utilityVMPath,omitempty"`
+}
+
+// WindowsHostProcess contains information for configuring a host process container on Windows.
+type WindowsHostProcess struct {
+	// VolumeMountPoint is an optional path that indicates where the containers writable layer volume should
+	// be mounted on the host.
+	VolumeMountPoint string `json:"volumeMountPoint,omitempty"`
 }
 
 // VM contains information for virtual-machine-based containers.

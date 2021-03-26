@@ -93,6 +93,14 @@
                         "type": "string"
                     }
                 }
+            },
+            "hostProcess": {
+                "type": "object",
+                "properties": {
+                    "volumeMountPoint": {
+                        "type": "string"
+                    }
+                }
             }
         },
         "required": [

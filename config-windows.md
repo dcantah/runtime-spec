@@ -205,3 +205,25 @@ The following parameters can be specified:
     }
 }
 ```
+
+## <a name="configWindowsHostProcess" />HostProcess
+
+`hostProcess` is an OPTIONAL field of the Windows configuration.
+If present, the container MUST be run as a host process container. This is a process or set of processes in a job object that is managed by the runtime. 
+If omitted, the container MUST be run as either a Windows Server Container, or with Hyper-V isolation if `hyperv` is supplied.
+If `hyperv` and `hostProcess` are both present, the runtime MUST return an error.
+
+The following parameters can be specified:
+
+* **`volumeMountPoint`** *(string, OPTIONAL)* - specifies the path that the containers writable layer volume should be mounted to.
+    If not supplied, the runtime will create a random path for the volume to be mounted at.
+
+### Example
+
+```json
+"windows": {
+    "hostProcess": {
+        "volumeMountPoint": "C:\\foo\\bar\\baz"
+    }
+}
+```
